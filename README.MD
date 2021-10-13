@@ -111,3 +111,13 @@
 - 左侧栏TEX --> BUILD --> Recipe: xelatex
   
 🍻 Done！
+
+## 提供的一些快捷操作
+```bash
+# 编译
+make build
+# 清楚中间文件
+make clean 
+# 获取提交码（仅支持MacOS和Linux）
+make submit
+```
