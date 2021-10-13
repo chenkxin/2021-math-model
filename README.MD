@@ -1,4 +1,4 @@
-# 2021 数学建模模板
+# 2021 数学建模Latex源代码
 
 ## 使用方法
 - 下载好VSCode，Latex以及VSCode系列插件，用VSCode打开此项目
