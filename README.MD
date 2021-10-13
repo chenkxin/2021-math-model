@@ -11,75 +11,78 @@
 F1 –> 输入Open Settings（Json），添加以下配置，保存，重启
 
 ```json
-
-    // "latex-workshop.view.pdf.viewer": "external",
     // Latex workshop
     "latex-workshop.latex.tools": [
-            {
+        {
             "name": "latexmk",
             "command": "latexmk",
             "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "-pdf",
-            "%DOC%"
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
             ]
-            },
-            {
+        },
+        {
             "name": "xelatex",
             "command": "xelatex",
             "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
-                ]
-            },          
-            {
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
             ]
-            },
-            {
+        },
+        {
             "name": "bibtex",
             "command": "bibtex",
             "args": [
-            "%DOCFILE%"
+                "%DOCFILE%"
             ]
-            }
-        ],
+        }
+    ],
     "latex-workshop.latex.recipes": [
-    
-            {
+        {
+            "name": "xelatex*2",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
             "name": "xelatex",
             "tools": [
-            "xelatex"
-                        ]
-                    },
-            {
+                "xelatex"
+            ]
+        },
+        {
             "name": "latexmk",
             "tools": [
-            "latexmk"
-                        ]
-            },
-
-            {
+                "latexmk"
+            ]
+        },
+        {
             "name": "pdflatex -> bibtex -> pdflatex*2",
             "tools": [
-            "pdflatex",
-            "bibtex",
-            "pdflatex",
-            "pdflatex"
-                        ]
-            }
-        ],
-    "latex-workshop.view.pdf.viewer": "tab",  
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.clean.fileTypes": [
         "*.aux",
         "*.bbl",
@@ -100,9 +103,7 @@ F1 –> 输入Open Settings（Json），添加以下配置，保存，重启
         "*.fls",
         "*.log",
         "*.fdb_latexmk"
-        ],
-        "explorer.confirmDelete": false
-    
+    ],
 
 ```
 
