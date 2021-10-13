@@ -108,7 +108,7 @@
 
 ```   
 
-- 左侧栏TEX --> BUILD --> Recipe: xelatex
+- 左侧栏TEX --> BUILD --> Recipe: xelatex*2
   
 🍻 Done！
 
@@ -116,7 +116,7 @@
 ```bash
 # 编译
 make build
-# 清楚中间文件
+# 清除中间文件
 make clean 
 # 获取提交码（仅支持MacOS和Linux）
 make submit
