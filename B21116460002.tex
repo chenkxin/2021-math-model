@@ -374,13 +374,46 @@ d_{16QAM}=\frac{\sqrt{2}}{L-1}=\frac{\sqrt{2}}{\sqrt{M}-1}=3\sqrt{2}
 
 \subsection{时间滞后性的考虑}
 空气质量指数受到多种气象条件的影响，而气象条件由于其本身特性，会导致AQI的变化产生一定的滞后性。
-如，xx 点吹的风，在 xx 时间后会在 AQI 上体现出来。% 具体时间依据图表。
+% 如，xx 点吹的风，在  时间后会在 AQI 上体现出来。% 具体时间依据图表。
 % 下图， 风力的折线图。
 % TODO: 风力对 AQI 的影响，时间滞后性。
 
-\subsection{数学模型的建立}
-查阅文献[8]了解到，气象条件对AQI的影响具有季节性，所以分成春夏秋冬四级考虑。
+\subsection{相关性分析}
+\begin{figure}[htbp]
+  \center{
+  \includegraphics[width=.9\textwidth]{A-0相关性分析.pdf}
+  }
+  \caption{相关性分析}\label{fig_相关性分析}
+\end{figure}
 
+根据如图所示的相关系数热力图，可以直观地观察到，温度,湿度,风速,近地2米温度,地表温度,比湿,湿度,边界层高度,感热通量,潜热通量,短波辐射,地面太阳能辐射这12个指标与污染物浓度相关性较高。
+
+\subsection{数学模型的建立}
+常用聚类方法有K-Means（K 均值）聚类，用高斯混合模型（GMM）的最大期望（EM）聚类，谱聚类等等。
+
+本题采用谱聚类方式。因为谱聚类相对于传统的K-Means算法， 谱聚类对数据分布的适应性更强，聚类效果也很优秀，同时聚类的计算量也小很多。
+
+聚类结果如下图所示：
+
+\begin{figure}[htbp]
+    \center{
+    \includegraphics[width=.9\textwidth]{cluster.pdf}
+    }
+    \caption{聚类结果}\label{fig_聚类结果}
+\end{figure}
+
+簇中心气象指标：
+\begin{figure}[htbp]
+  \center{
+  \includegraphics[width=.9\textwidth]{clustering-center.pdf}
+  }
+  \caption{簇中心气象指标}\label{簇中心气象指标}
+\end{figure}
+
+由聚类结果图和中心气象指标图示可知，分成三类:
+一类气象条件, 湿度低但温度风速大
+二类气象条件正好相反，温度低，湿度高，风速低
+三类气象条件处于一类和二类之间，温度适中
 
 
 \subsection{模型求解和分析}
