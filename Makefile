@@ -1,4 +1,4 @@
-TEAM_ID = 21116460002
+TEAM_ID = B21116460002
 build:
 	xelatex -synctex=1 -interaction=nonstopmode -file-line-error $(TEAM_ID).tex
 	xelatex -synctex=1 -interaction=nonstopmode -file-line-error $(TEAM_ID).tex
