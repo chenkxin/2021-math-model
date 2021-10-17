@@ -372,7 +372,49 @@ d_{16QAM}=\frac{\sqrt{2}}{L-1}=\frac{\sqrt{2}}{\sqrt{M}-1}=3\sqrt{2}
 \subsection{问题二的描述分析}
 问题二是在污染物排放情况不变的条件下，考虑气象条件。利用指定的数据，根据污染物对气象条件的影响程度，对气象条件进行合理分类，并对分类后的气象条件特性进行分析。针对这个问题，本文首先考虑到的是\textbf{时间滞后性问题}，通过分析各气象条件与6项污染物之间的峰值，计算出了各影响因子之间的时间滞后性，为使得AQI的结果更加贴近实际的预测，我们将计算出的滞后时间进行了调整，使得各影响因子的峰值实现了跨时组合。
 
+\subsection{时间滞后性的考虑}
+空气质量指数受到多种气象条件的影响，而气象条件由于其本身特性，会导致AQI的变化产生一定的滞后性。
+% 如，xx 点吹的风，在  时间后会在 AQI 上体现出来。% 具体时间依据图表。
+% 下图， 风力的折线图。
+% TODO: 风力对 AQI 的影响，时间滞后性。
+
+\subsection{相关性分析}
+\begin{figure}[htbp]
+  \center{
+  \includegraphics[width=.9\textwidth]{A-0相关性分析.pdf}
+  }
+  \caption{相关性分析}\label{fig_相关性分析}
+\end{figure}
+
+根据如图所示的相关系数热力图，可以直观地观察到，温度,湿度,风速,近地2米温度,地表温度,比湿,湿度,边界层高度,感热通量,潜热通量,短波辐射,地面太阳能辐射这12个指标与污染物浓度相关性较高。
+
 \subsection{数学模型的建立}
+常用聚类方法有K-Means（K 均值）聚类，用高斯混合模型（GMM）的最大期望（EM）聚类，谱聚类等等。
+
+本题采用谱聚类方式。因为谱聚类相对于传统的K-Means算法， 谱聚类对数据分布的适应性更强，聚类效果也很优秀，同时聚类的计算量也小很多。
+
+聚类结果如下图所示：
+
+\begin{figure}[htbp]
+    \center{
+    \includegraphics[width=.9\textwidth]{cluster.pdf}
+    }
+    \caption{聚类结果}\label{fig_聚类结果}
+\end{figure}
+
+簇中心气象指标：
+\begin{figure}[htbp]
+  \center{
+  \includegraphics[width=.9\textwidth]{clustering-center.pdf}
+  }
+  \caption{簇中心气象指标}\label{簇中心气象指标}
+\end{figure}
+
+由聚类结果图和中心气象指标图示可知，分成三类:
+一类气象条件, 湿度低但温度风速大
+二类气象条件正好相反，温度低，湿度高，风速低
+三类气象条件处于一类和二类之间，温度适中
+
 
 \subsection{模型求解和分析}
 
@@ -382,109 +424,109 @@ d_{16QAM}=\frac{\sqrt{2}}{L-1}=\frac{\sqrt{2}}{\sqrt{M}-1}=3\sqrt{2}
     \subfigure[pic1.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A-0.png} 
+    \includegraphics[width=5in]{A-0相关性分析.pdf} 
     \end{minipage}}
 
     \subfigure[pic2.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A-1.png} 
+    \includegraphics[width=5in]{A-1相关性分析.pdf} 
     \end{minipage}}
 
     \subfigure[pic3.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A-2.png}
+    \includegraphics[width=5in]{A-2相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic4.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A1-0.png}
+    \includegraphics[width=5in]{A1-0相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic5.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A1-1.png}
+    \includegraphics[width=5in]{A1-1相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic6.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A1-2.png}
+    \includegraphics[width=5in]{A1-2相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic7.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A2-0.png}
+    \includegraphics[width=5in]{A2-0相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic8.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A2-1.png}
+    \includegraphics[width=5in]{A2-1相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic9.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A2-2.png}
+    \includegraphics[width=5in]{A2-2相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic10.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A3-0.png}
+    \includegraphics[width=5in]{A3-0相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic11.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A3-1.png}
+    \includegraphics[width=5in]{A3-1相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic12.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{A3-2.png}
+    \includegraphics[width=5in]{A3-2相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic13.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{B-0.png}
+    \includegraphics[width=5in]{B-0相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic14.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{B-1.png}
+    \includegraphics[width=5in]{B-1相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic15.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{B-2.png}
+    \includegraphics[width=5in]{B-2相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic16.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{C-0.png}
+    \includegraphics[width=5in]{C-0相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic17.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{C-1.png}
+    \includegraphics[width=5in]{C-1相关性分析.pdf}
     \end{minipage}}
 
     \subfigure[pic18.]{
     \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \includegraphics[width=1in]{C-2.png}
+    \includegraphics[width=5in]{C-2相关性分析.pdf}
     \end{minipage}}
 
   }
@@ -723,6 +765,9 @@ GAM是一种非参数回归模型，模型中部分或全部的自变量采用�
 \bibitem{ref4}Shukla, Satya Narayan, and Benjamin M. Marlin. Interpolation-prediction networks for irregularly sampled time series. arXiv preprint arXiv:1909.07782 (2019).
 \bibitem{ref5}Solanki, H. U., Dhyey Bhatpuria, and Prakash Chauhan. "Applications of generalized additive model (GAM) to satellite-derived variables and fishery data for prediction of fishery resources distributions in the Arabian Sea." Geocarto international 32.1 (2017): 30-43.
 \bibitem{ref6}贺祥,林振山. 基于GAM模型分析影响因素交互作用对${PM_{2.5}}$浓度变化的影响[J]. 环境科学,2017,38(01):22-32.
+\bibitem{ref7}Li, Shiyang, Xiaoyong Jin, Yao Xuan, Xiyou Zhou, Wenhu Chen, Yu-Xiang Wang, and Xifeng Yan. “Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting.” ArXiv:1907.00235 [Cs, Stat], January 3, 2020. http://arxiv.org/abs/1907.00235.
+\bibitem{ref8}刘昕, 辛存林. 陕甘宁地区城市空气质量特征及影响因素分析. 环境科学研究, 2019, 32(12): 2065-2074.
+
 \end{thebibliography}
 
 %--------------------附录----------------------
